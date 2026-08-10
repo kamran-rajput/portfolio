@@ -21,7 +21,7 @@ export function SecurityResearch() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl flex items-center">
-            <BookOpen className="w-8 h-8 mr-3 text-primary drop-shadow-[0_0_8px_rgba(37,99,235,0.3)]" />
+            <BookOpen className="w-8 h-8 mr-3 text-primary drop-shadow-[0_0_8px_rgba(192,133,82,0.3)]" />
             Security Research
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">Technical insights and documentation.</p>
@@ -46,7 +46,7 @@ export function SecurityResearch() {
                       </div>
                       <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors">{article.title}</h3>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:drop-shadow-[0_0_6px_rgba(37,99,235,0.4)] transition-all" />
+                    <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:drop-shadow-[0_0_6px_rgba(192,133,82,0.4)] transition-all" />
                   </div>
                 </div>
               </Link>
@@ -55,7 +55,7 @@ export function SecurityResearch() {
         </motion.div>
         
         <div className="mt-8 text-center">
-          <Link href="/blog" className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 hover:drop-shadow-[0_0_8px_rgba(37,99,235,0.3)] transition-all underline-offset-4">
+          <Link href="/blog" className="inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 hover:drop-shadow-[0_0_8px_rgba(192,133,82,0.3)] transition-all underline-offset-4">
             View All Research <ArrowRight className="ml-1 w-4 h-4" />
           </Link>
         </div>

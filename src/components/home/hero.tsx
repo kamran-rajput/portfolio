@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Shield, Lock, Terminal, Cpu } from "lucide-react";
+import { Shield, Lock, Terminal, Globe } from "lucide-react";
+import { SiGithub } from "@icons-pack/react-simple-icons";
 import { Button } from "@/components/ui/button";
 import { FloatingParticles } from "@/components/ui/floating-particles";
 
@@ -23,8 +25,8 @@ export function Hero() {
       <FloatingParticles count={18} />
 
       {/* Decorative gradient orbs */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/8 rounded-full blur-[120px] -z-10 pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-blue-400/6 rounded-full blur-[100px] -z-10 pointer-events-none" />
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/12 rounded-full blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-32 w-80 h-80 bg-accent/10 rounded-full blur-[100px] -z-10 pointer-events-none" />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         
@@ -37,8 +39,8 @@ export function Hero() {
         >
           <div className="inline-flex items-center space-x-2">
             <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-accent shadow-[0_0_8px_var(--color-accent)]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-500 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-600 shadow-[0_0_8px_rgba(37,99,235,0.6)]"></span>
             </span>
             <span className="text-sm font-medium tracking-widest text-muted-foreground uppercase">
               System Online
@@ -50,29 +52,32 @@ export function Hero() {
             <span className="gradient-text">Kamran Akmal</span>
           </h1>
           
-          <h2 className="text-xl sm:text-2xl font-medium text-muted-foreground">
-            Cybersecurity Engineer
+          <h2 className="text-xl sm:text-2xl font-semibold text-primary">
+            Cybersecurity Analyst
           </h2>
           
           <p className="max-w-xl text-base sm:text-lg text-muted-foreground leading-relaxed">
-            Building secure systems through application security, security operations, cloud security, and AI-powered security automation.
+            I build and analyze secure systems through <strong className="text-foreground font-semibold">security operations, application security, network security, and cloud security</strong> — backed by hands-on labs, security research, and continuous practical learning.
           </p>
           
           <div className="flex flex-wrap items-center gap-4 pt-4">
-            <Button size="lg" className="h-12 px-8 shadow-md hover:shadow-primary/25 hover:shadow-lg transition-all hover:glow-primary relative overflow-hidden shimmer-overlay">
-              View Projects
+            <Button asChild size="lg" className="h-12 px-8 shadow-md hover:shadow-primary/25 hover:shadow-lg transition-all hover:glow-primary relative overflow-hidden shimmer-overlay">
+              <Link href="/projects">View My Work</Link>
             </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8 border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all glass-badge">
-              Download Resume
+            <Button asChild size="lg" variant="outline" className="h-12 px-8 border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all glass-badge">
+              <a href="https://github.com/muhammad-kamran-akmal" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2">
+                <SiGithub className="w-4 h-4 text-primary" />
+                GitHub
+              </a>
             </Button>
           </div>
 
-          <div className="flex flex-wrap gap-2 pt-6">
+          <div className="flex flex-wrap gap-2 pt-4">
             {[
-              { icon: Shield, label: "Application Security" },
-              { icon: Terminal, label: "Security Operations" },
-              { icon: Lock, label: "Cloud Security" },
-              { icon: Cpu, label: "AI Automation" },
+              { icon: Shield, label: "Security Operations" },
+              { icon: Lock, label: "Application Security" },
+              { icon: Terminal, label: "Cloud Security" },
+              { icon: Globe, label: "Network Security" },
             ].map((item, idx) => (
               <span 
                 key={idx}
@@ -92,26 +97,26 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="relative aspect-square max-w-md mx-auto w-full lg:ml-auto"
         >
-          <div className="absolute inset-0 rounded-full glass flex items-center justify-center shadow-[0_0_80px_rgba(37,99,235,0.12)]">
+          <div className="absolute inset-0 rounded-full glass flex items-center justify-center shadow-[0_0_80px_rgba(192,133,82,0.15)]">
             {/* Core */}
             <div className="relative w-32 h-32 rounded-full border border-primary/40 flex items-center justify-center animate-[spin_20s_linear_infinite]">
-              <div className="absolute w-4 h-4 bg-primary rounded-full shadow-[0_0_15px_var(--color-primary)] -top-2 left-1/2 -translate-x-1/2"></div>
+              <div className="absolute w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.8)] -top-2 left-1/2 -translate-x-1/2"></div>
               <div className="w-24 h-24 rounded-full border border-dashed border-primary/30 animate-[spin_15s_linear_reverse_infinite]"></div>
             </div>
             
             {/* Orbit 1 */}
-            <div className="absolute w-64 h-64 rounded-full border border-white/[0.06] animate-[spin_30s_linear_reverse_infinite]">
-              <div className="absolute w-3 h-3 bg-primary/40 rounded-full top-1/4 -right-1.5 shadow-[0_0_8px_rgba(37,99,235,0.3)]"></div>
+            <div className="absolute w-64 h-64 rounded-full border border-primary/20 animate-[spin_30s_linear_reverse_infinite]">
+              <div className="absolute w-3 h-3 bg-red-500 rounded-full top-1/4 -right-1.5 shadow-[0_0_10px_rgba(239,68,68,0.8)]"></div>
             </div>
             
             {/* Orbit 2 */}
-            <div className="absolute w-[340px] h-[340px] rounded-full border border-dashed border-white/[0.04] animate-[spin_40s_linear_infinite]">
-              <div className="absolute w-2 h-2 bg-blue-400/40 rounded-full shadow-[0_0_10px_rgba(96,165,250,0.3)] bottom-1/4 -left-1"></div>
-              <div className="absolute w-2 h-2 bg-red-400/30 rounded-full shadow-[0_0_10px_rgba(248,113,113,0.3)] top-10 right-10"></div>
+            <div className="absolute w-[340px] h-[340px] rounded-full border border-dashed border-primary/15 animate-[spin_40s_linear_infinite]">
+              <div className="absolute w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.8)] bottom-1/4 -left-1.5"></div>
+              <div className="absolute w-3 h-3 bg-red-500 rounded-full shadow-[0_0_10px_rgba(239,68,68,0.8)] top-10 right-10"></div>
             </div>
             
             {/* Center Icon */}
-            <Shield className="absolute w-12 h-12 text-primary drop-shadow-[0_0_12px_rgba(37,99,235,0.5)]" />
+            <Shield className="absolute w-12 h-12 text-blue-600 drop-shadow-[0_0_14px_rgba(37,99,235,0.6)]" />
           </div>
         </motion.div>
       </div>

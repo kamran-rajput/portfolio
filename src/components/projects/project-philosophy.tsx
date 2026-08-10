@@ -29,7 +29,7 @@ export function ProjectPhilosophy() {
         >
           {pillars.map((pillar, idx) => (
             <motion.div key={idx} variants={fadeUpVariant} className="flex flex-col items-center text-center group">
-              <div className="w-16 h-16 rounded-2xl bg-background border border-border/50 flex items-center justify-center mb-6 shadow-sm group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(37,99,235,0.15)] transition-all">
+              <div className="w-16 h-16 rounded-2xl bg-background border border-border/50 flex items-center justify-center mb-6 shadow-sm group-hover:border-primary/50 group-hover:shadow-[0_0_15px_rgba(192,133,82,0.15)] transition-all">
                 <pillar.icon className="w-8 h-8 text-primary/80 group-hover:text-primary transition-colors" />
               </div>
               <h3 className="text-lg font-bold text-foreground mb-2">{pillar.title}</h3>

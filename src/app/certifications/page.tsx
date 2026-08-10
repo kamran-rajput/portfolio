@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { CertHero } from "@/components/certifications/cert-hero";
 import { LearningPhilosophy } from "@/components/certifications/learning-philosophy";
 import { FeaturedCerts } from "@/components/certifications/featured-certs";
@@ -8,6 +9,11 @@ import { HandsOnLearning } from "@/components/certifications/hands-on-learning";
 import { ContinuousDevelopment } from "@/components/certifications/continuous-development";
 import { ProfessionalValues } from "@/components/certifications/professional-values";
 import { CertCta } from "@/components/certifications/cert-cta";
+
+export const metadata: Metadata = {
+  title: "Certifications",
+  description: "Professional certifications, training, and credentials of Kamran Akmal.",
+};
 
 export default function CertificationsPage() {
   return (

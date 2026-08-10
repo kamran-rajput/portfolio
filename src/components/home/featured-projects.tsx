@@ -50,7 +50,7 @@ export function FeaturedProjects() {
             <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl">Featured Projects</h2>
             <p className="mt-4 text-lg text-muted-foreground max-w-2xl">Practical solutions applied to real-world security challenges.</p>
           </div>
-          <Link href="/projects" className="hidden md:inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 hover:drop-shadow-[0_0_8px_rgba(37,99,235,0.3)] transition-all underline-offset-4">
+          <Link href="/projects" className="hidden md:inline-flex items-center text-sm font-medium text-primary hover:text-primary/80 hover:drop-shadow-[0_0_8px_rgba(192,133,82,0.3)] transition-all underline-offset-4">
             View All Projects <ArrowUpRight className="ml-1 w-4 h-4" />
           </Link>
         </div>

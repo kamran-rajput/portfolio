@@ -30,7 +30,7 @@ export function AboutPreview() {
           <div className="mt-10">
             <Link 
               href="/about" 
-              className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-all group hover:drop-shadow-[0_0_12px_rgba(37,99,235,0.4)]"
+              className="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-all group hover:drop-shadow-[0_0_12px_rgba(192,133,82,0.4)]"
             >
               Read More
               <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1.5 transition-transform" />

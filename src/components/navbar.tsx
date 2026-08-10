@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Menu } from "lucide-react";
@@ -31,8 +32,17 @@ export function Navbar() {
         {/* Logo */}
         <Link
           href="/"
-          className="text-xl font-bold tracking-tight transition-all hover:drop-shadow-[0_0_12px_rgba(37,99,235,0.4)]"
+          className="flex items-center gap-2.5 text-xl font-bold tracking-tight transition-all hover:drop-shadow-[0_0_12px_rgba(192,133,82,0.4)]"
         >
+          <div className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full border border-primary/30 ring-2 ring-primary/10 shadow-sm">
+            <Image
+              src="/icon.png"
+              alt="Kamran Akmal Logo"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
           <span className="gradient-text">
             Portfolio
           </span>
@@ -58,7 +68,7 @@ export function Navbar() {
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute inset-x-1 -bottom-[1.5px] h-0.5 rounded-full bg-primary shadow-[0_2px_8px_rgba(37,99,235,0.5)]" />
+                    <span className="absolute inset-x-1 -bottom-[1.5px] h-0.5 rounded-full bg-primary shadow-[0_2px_8px_rgba(192,133,82,0.5)]" />
                   )}
                 </Link>
               </li>
@@ -86,8 +96,16 @@ export function Navbar() {
               <Link
                 href="/"
                 onClick={() => setOpen(false)}
-                className="text-lg font-bold tracking-tight"
+                className="flex items-center gap-2.5 text-lg font-bold tracking-tight"
               >
+                <div className="relative h-7 w-7 shrink-0 overflow-hidden rounded-full border border-primary/30 ring-2 ring-primary/10 shadow-sm">
+                  <Image
+                    src="/icon.png"
+                    alt="Kamran Akmal Logo"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
                 <span className="gradient-text">
                   Portfolio
                 </span>

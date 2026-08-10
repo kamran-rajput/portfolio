@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { BlogHero } from "@/components/blog/blog-hero";
 import { ResearchPhilosophy } from "@/components/blog/research-philosophy";
 import { FeaturedArticles } from "@/components/blog/featured-articles";
@@ -8,6 +9,11 @@ import { FeaturedSeries } from "@/components/blog/featured-series";
 import { ReadingJourney } from "@/components/blog/reading-journey";
 import { NewsletterFollow } from "@/components/blog/newsletter-follow";
 import { BlogCta } from "@/components/blog/blog-cta";
+
+export const metadata: Metadata = {
+  title: "Blog",
+  description: "Security research, technical writeups, and articles by Kamran Akmal.",
+};
 
 export default function BlogPage() {
   return (

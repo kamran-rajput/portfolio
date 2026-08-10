@@ -48,3 +48,8 @@ __pycache__/
 .coverage
 AGENTS.md
 CLAUDE.md
+
+# Temporary resources & empty folders
+resources/
+portfolio/
+

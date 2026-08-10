@@ -1,10 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, Link as LinkIcon, Mail } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { SocialLinksCta } from "@/components/social-links-cta";
 
 export function BlogCta() {
   return (
@@ -28,17 +28,7 @@ export function BlogCta() {
           </Button>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-8 pt-4">
-          <Link href="/resume.pdf" className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 font-medium text-sm">
-            <Download className="w-4 h-4" /> Download Resume
-          </Link>
-          <Link href="https://linkedin.com" className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 font-medium text-sm">
-            <LinkIcon className="w-4 h-4" /> Connect on LinkedIn
-          </Link>
-          <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors flex items-center gap-2 font-medium text-sm">
-            <Mail className="w-4 h-4" /> Contact Me
-          </Link>
-        </div>
+        <SocialLinksCta />
       </div>
     </AnimatedSection>
   );

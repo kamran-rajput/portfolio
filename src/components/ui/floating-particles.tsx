@@ -19,11 +19,11 @@ export function FloatingParticles({
   count = 14,
   className,
   colors = [
+    "bg-primary/20",
     "bg-primary/15",
-    "bg-primary/10",
-    "bg-blue-400/10",
-    "bg-blue-300/8",
-    "bg-accent/10",
+    "bg-accent/15",
+    "bg-muted-foreground/15",
+    "bg-primary/25",
   ],
 }: FloatingParticlesProps) {
   const particles = useMemo(() => {

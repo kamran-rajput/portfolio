@@ -16,17 +16,24 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: {
-    default: "Portfolio",
-    template: "%s | Portfolio",
+    default: "Kamran Akmal | Home",
+    template: "Kamran Akmal | %s",
   },
-  description: "My personal portfolio — projects, certifications, blog, and more.",
+  description: "Kamran Akmal's personal portfolio — projects, certifications, blog, and more.",
+  icons: {
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${archivo.variable} ${spaceGrotesk.variable} h-full antialiased dark`}
+      className={`${archivo.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-background text-foreground">
         <Navbar />

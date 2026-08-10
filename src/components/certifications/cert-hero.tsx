@@ -32,16 +32,16 @@ export function CertHero() {
         >
           <div className="inline-flex items-center space-x-2 bg-primary/10 px-3 py-1 rounded-full border border-primary/20">
             <span className="text-xs font-mono tracking-wider text-primary uppercase">
-              Continuous Improvement
+              Verified Achievements
             </span>
           </div>
 
           <h1 className="font-heading text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-foreground leading-[1.1]">
-            Professional <span className="text-primary glow-text">Certifications</span>
+            Certifications & <span className="text-primary glow-text">Credentials</span>
           </h1>
 
           <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-            A structured learning journey built through industry-recognized certifications, practical laboratories, cloud security training, and continuous hands-on experience.
+            Verified cybersecurity training and professional development backed by hands-on learning.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
