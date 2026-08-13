@@ -7,6 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { HelpCircle } from "lucide-react";
 
 const faqs = [
   {
@@ -33,17 +34,31 @@ const faqs = [
 
 export function ContactFaq() {
   return (
-    <AnimatedSection className="py-24">
+    <AnimatedSection className="py-20">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center">Frequently Asked Questions</h2>
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center space-x-2 bg-primary/10 px-3.5 py-1.5 rounded-full border border-primary/20 mb-3 backdrop-blur-md">
+            <HelpCircle className="w-4 h-4 text-primary" />
+            <span className="text-xs font-mono font-medium text-primary uppercase tracking-wider">
+              Quick Answers
+            </span>
+          </div>
+          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl text-foreground">
+            Frequently Asked <span className="gradient-text glow-text">Questions</span>
+          </h2>
+        </div>
         
-        <Accordion className="w-full">
+        <Accordion className="w-full space-y-3">
           {faqs.map((faq, idx) => (
-            <AccordionItem key={idx} value={`item-${idx}`} className="border-border/40 px-2">
-              <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary transition-colors py-5">
+            <AccordionItem 
+              key={idx} 
+              value={`item-${idx}`} 
+              className="bg-card/40 backdrop-blur-md border border-primary/20 hover:border-primary/50 rounded-2xl px-6 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(192,133,82,0.1)]"
+            >
+              <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary transition-colors py-5 text-base sm:text-lg">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground leading-relaxed pb-6">
+              <AccordionContent className="text-muted-foreground leading-relaxed pb-6 text-sm sm:text-base">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
@@ -53,3 +68,4 @@ export function ContactFaq() {
     </AnimatedSection>
   );
 }
+

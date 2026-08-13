@@ -1,10 +1,10 @@
 "use client";
 
-import { AnimatedSection, staggerContainer, fadeUpVariant } from "@/components/ui/animated-section";
+import { AnimatedSection } from "@/components/ui/animated-section";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Clock, Activity } from "lucide-react";
+import { ArrowUpRight, Clock, Activity, FolderGit2 } from "lucide-react";
 import Link from "next/link";
 
 const featured = [
@@ -64,9 +64,11 @@ const featured = [
 
 export function FeaturedProjectsList() {
   return (
-    <AnimatedSection className="py-24">
+    <AnimatedSection className="py-20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl mb-12">Featured Engineering Work</h2>
+        <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-foreground">
+          Featured <span className="gradient-text glow-text">Engineering Work</span>
+        </h2>
         
         <div className="space-y-12">
           {featured.map((project, idx) => (
@@ -75,36 +77,45 @@ export function FeaturedProjectsList() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 0.5 }}
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <Card className="bg-background border-border/40 hover:border-primary/50 transition-all duration-300 group overflow-hidden shadow-sm hover:shadow-md relative">
+              <Card className="bg-card/50 backdrop-blur-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 group overflow-hidden shadow-[0_0_30px_rgba(192,133,82,0.06)] hover:shadow-[0_0_40px_rgba(192,133,82,0.18)] rounded-2xl relative">
                 <CardContent className="p-0">
                   <div className="grid grid-cols-1 lg:grid-cols-12">
                     {/* Left Column: Metadata & Core Info */}
-                    <div className="p-8 lg:col-span-5 bg-secondary/5 border-b lg:border-b-0 lg:border-r border-border/30 flex flex-col justify-between">
+                    <div className="p-8 lg:col-span-5 bg-primary/5 border-b lg:border-b-0 lg:border-r border-primary/20 flex flex-col justify-between">
                       <div>
                         <div className="flex items-center gap-3 mb-4">
-                          <Badge variant="secondary" className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20">{project.category}</Badge>
+                          <Badge variant="secondary" className="bg-primary/10 text-primary border border-primary/30 hover:bg-primary/20 backdrop-blur-md px-3 py-1 font-mono text-xs">
+                            {project.category}
+                          </Badge>
                           <div className="flex items-center text-xs text-muted-foreground font-mono">
-                            <Clock className="w-3 h-3 mr-1" /> {project.readTime}
+                            <Clock className="w-3.5 h-3.5 mr-1 text-primary/70" /> {project.readTime}
                           </div>
                         </div>
-                        <h3 className="text-2xl font-bold text-foreground mb-4">{project.title}</h3>
+                        <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">{project.title}</h3>
                         <p className="text-sm text-muted-foreground leading-relaxed mb-6">{project.overview}</p>
                       </div>
 
                       <div className="space-y-4">
                         <div className="flex items-center text-xs text-muted-foreground font-medium">
                           <Activity className="w-4 h-4 mr-2 text-primary" /> 
-                          Status: <span className="ml-1 text-foreground">{project.status}</span>
+                          Status: <span className="ml-1 text-foreground font-semibold">{project.status}</span>
                         </div>
-                        <Link href={project.link} className="inline-flex items-center justify-center w-full py-2.5 px-4 bg-primary text-primary-foreground font-medium rounded-md hover:bg-primary/90 transition-colors">
-                          View Case Study <ArrowUpRight className="ml-2 w-4 h-4" />
+                        <Link 
+                          href={project.link} 
+                          className="inline-flex items-center justify-center w-full py-3 px-5 bg-gradient-to-r from-primary via-amber-600 to-primary bg-[length:200%_auto] text-primary-foreground font-semibold text-sm rounded-xl shadow-[0_0_20px_rgba(192,133,82,0.2)] hover:shadow-[0_0_30px_rgba(192,133,82,0.4)] transition-all duration-300 relative overflow-hidden group/btn cursor-pointer"
+                        >
+                          <span className="flex items-center gap-2 relative z-10">
+                            View Case Study <ArrowUpRight className="w-4 h-4 transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform duration-300" />
+                          </span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover/btn:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none"></div>
                         </Link>
                       </div>
                     </div>
 
-                    {/* Right Column: Deep Dive (Hover Reveal on desktop) */}
+                    {/* Right Column: Deep Dive */}
                     <div className="p-8 lg:col-span-7 flex flex-col justify-center space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
@@ -117,14 +128,14 @@ export function FeaturedProjectsList() {
                         </div>
                       </div>
 
-                      <div className="border-t border-border/30 pt-6">
+                      <div className="border-t border-primary/15 pt-6">
                         <h4 className="text-xs font-bold uppercase tracking-wider text-primary mb-2">Security Impact</h4>
                         <p className="text-sm text-foreground/90 font-medium leading-relaxed">{project.impact}</p>
                       </div>
 
                       <div className="pt-2 flex flex-wrap gap-2">
                         {project.tech.map((tech, tIdx) => (
-                          <span key={tIdx} className="text-xs font-mono text-muted-foreground bg-background border border-border/50 px-2 py-1 rounded">
+                          <span key={tIdx} className="text-xs font-mono text-muted-foreground bg-primary/5 border border-primary/20 hover:border-primary/40 px-2.5 py-1 rounded-md transition-colors">
                             {tech}
                           </span>
                         ))}
@@ -140,3 +151,4 @@ export function FeaturedProjectsList() {
     </AnimatedSection>
   );
 }
+

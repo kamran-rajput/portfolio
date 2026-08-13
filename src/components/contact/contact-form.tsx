@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { CheckCircle2, Send, AlertCircle } from "lucide-react";
+import { CheckCircle2, Send, AlertCircle, ShieldCheck, Lock } from "lucide-react";
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,14 +56,26 @@ export function ContactForm() {
   };
 
   return (
-    <AnimatedSection className="py-24 bg-secondary/5 border-y border-border/30" id="contact-form">
+    <AnimatedSection className="py-20 bg-secondary/5 border-y border-border/30 relative" id="contact-form">
       <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl mb-4">Send a Message</h2>
-          <p className="text-lg text-muted-foreground">Have an opportunity or a technical question? Reach out securely below.</p>
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center space-x-2 bg-primary/10 px-3.5 py-1.5 rounded-full border border-primary/20 mb-4 backdrop-blur-md">
+            <ShieldCheck className="w-4 h-4 text-primary" />
+            <span className="text-xs font-mono font-medium text-primary uppercase tracking-wider">
+              Encrypted Communication
+            </span>
+          </div>
+          <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl mb-3 text-foreground">
+            Send a <span className="gradient-text glow-text">Direct Message</span>
+          </h2>
+          <p className="text-base sm:text-lg text-muted-foreground">Have an opportunity or a technical question? Reach out securely below.</p>
         </div>
 
-        <div className="bg-background border border-border/40 rounded-2xl p-6 md:p-10 shadow-lg relative overflow-hidden min-h-[520px] flex flex-col justify-center">
+        <div className="bg-card/50 backdrop-blur-xl border border-primary/20 rounded-2xl p-6 md:p-10 shadow-[0_0_50px_rgba(192,133,82,0.08)] hover:border-primary/40 transition-all duration-300 relative overflow-hidden min-h-[520px] flex flex-col justify-center">
+          {/* Subtle background glow circle inside form card */}
+          <div className="absolute -top-24 -right-24 w-60 h-60 bg-primary/10 rounded-full blur-[80px] pointer-events-none"></div>
+          <div className="absolute -bottom-24 -left-24 w-60 h-60 bg-accent/10 rounded-full blur-[80px] pointer-events-none"></div>
+
           <AnimatePresence mode="wait">
             {isSuccess ? (
               <motion.div 
@@ -78,9 +90,9 @@ export function ContactForm() {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
-                  className="w-20 h-20 bg-green-500/10 border border-green-500/20 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(34,197,94,0.2)]"
+                  className="w-20 h-20 bg-emerald-500/10 border border-emerald-500/30 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(16,185,129,0.25)]"
                 >
-                  <CheckCircle2 className="w-10 h-10 text-green-500" />
+                  <CheckCircle2 className="w-10 h-10 text-emerald-500" />
                 </motion.div>
                 <h3 className="font-heading text-2xl sm:text-3xl font-bold text-foreground mb-3">
                   Message Received
@@ -96,7 +108,7 @@ export function ContactForm() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onSubmit={handleSubmit}
-                className="space-y-6 w-full"
+                className="space-y-6 w-full relative z-10"
               >
                 {/* Honeypot field to block automated spambots */}
                 <input 
@@ -112,7 +124,7 @@ export function ContactForm() {
                   <motion.div 
                     initial={{ opacity: 0, y: -8 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-3 p-4 bg-destructive/10 border border-destructive/20 rounded-lg text-destructive text-sm font-medium"
+                    className="flex items-center gap-3 p-4 bg-destructive/10 border border-destructive/25 rounded-xl text-destructive text-sm font-medium"
                   >
                     <AlertCircle className="w-5 h-5 shrink-0" />
                     <span>{errorMessage}</span>
@@ -121,28 +133,59 @@ export function ContactForm() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
-                    <Input id="name" name="name" required placeholder="John Doe" className="bg-secondary/20" />
+                    <Label htmlFor="name" className="text-sm font-semibold">Full Name</Label>
+                    <Input 
+                      id="name" 
+                      name="name" 
+                      required 
+                      placeholder="John Doe" 
+                      className="bg-secondary/30 border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl" 
+                    />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
-                    <Input id="email" name="email" type="email" required placeholder="john@example.com" className="bg-secondary/20" />
+                    <Label htmlFor="email" className="text-sm font-semibold">Email Address</Label>
+                    <Input 
+                      id="email" 
+                      name="email" 
+                      type="email" 
+                      required 
+                      placeholder="john@example.com" 
+                      className="bg-secondary/30 border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl" 
+                    />
                   </div>
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="company">Company / Organization <span className="text-muted-foreground font-normal">(Optional)</span></Label>
-                  <Input id="company" name="company" placeholder="Acme Security Inc." className="bg-secondary/20" />
+                  <Label htmlFor="company" className="text-sm font-semibold">Company / Organization <span className="text-muted-foreground font-normal">(Optional)</span></Label>
+                  <Input 
+                    id="company" 
+                    name="company" 
+                    placeholder="Acme Security Inc." 
+                    className="bg-secondary/30 border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl" 
+                  />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input id="subject" name="subject" required placeholder="Opportunity / Collaboration" className="bg-secondary/20" />
+                  <Label htmlFor="subject" className="text-sm font-semibold">Subject</Label>
+                  <Input 
+                    id="subject" 
+                    name="subject" 
+                    required 
+                    placeholder="Opportunity / Collaboration" 
+                    className="bg-secondary/30 border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl" 
+                  />
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea id="message" name="message" required placeholder="How can we collaborate?" rows={5} className="bg-secondary/20 resize-y" />
+                  <Label htmlFor="message" className="text-sm font-semibold">Message</Label>
+                  <Textarea 
+                    id="message" 
+                    name="message" 
+                    required 
+                    placeholder="How can we collaborate?" 
+                    rows={5} 
+                    className="bg-secondary/30 border-border/50 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl resize-y" 
+                  />
                 </div>
                 
                 <motion.div
@@ -153,7 +196,7 @@ export function ContactForm() {
                   <Button 
                     type="submit" 
                     disabled={isSubmitting} 
-                    className="w-full h-13 text-base font-semibold rounded-xl bg-gradient-to-r from-primary via-amber-600 to-primary bg-[length:200%_auto] text-primary-foreground shadow-[0_0_20px_rgba(192,133,82,0.2)] hover:shadow-[0_0_30px_rgba(192,133,82,0.4)] transition-all duration-300 relative overflow-hidden group cursor-pointer"
+                    className="w-full h-13 text-base font-semibold rounded-xl bg-gradient-to-r from-primary via-amber-600 to-primary bg-[length:200%_auto] text-primary-foreground shadow-[0_0_20px_rgba(192,133,82,0.25)] hover:shadow-[0_0_30px_rgba(192,133,82,0.45)] transition-all duration-300 relative overflow-hidden group cursor-pointer"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-3">
@@ -162,6 +205,7 @@ export function ContactForm() {
                       </span>
                     ) : (
                       <span className="flex items-center justify-center gap-2">
+                        <Lock className="w-4 h-4 text-primary-foreground/80" />
                         Send Secure Message
                         <Send className="w-4 h-4 transform group-hover:translate-x-1.5 group-hover:-translate-y-1.5 transition-transform duration-300 ease-out" />
                       </span>
@@ -179,3 +223,4 @@ export function ContactForm() {
     </AnimatedSection>
   );
 }
+

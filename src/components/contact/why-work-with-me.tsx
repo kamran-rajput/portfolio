@@ -14,9 +14,11 @@ const capabilities = [
 
 export function WhyWorkWithMe() {
   return (
-    <AnimatedSection className="py-24 bg-secondary/5 border-y border-border/30">
+    <AnimatedSection className="py-20 bg-secondary/5 border-y border-border/30 relative overflow-hidden">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center">What I Bring</h2>
+        <h2 className="font-heading text-3xl font-bold tracking-tight sm:text-4xl mb-12 text-center text-foreground">
+          What I <span className="gradient-text glow-text">Bring to the Table</span>
+        </h2>
         
         <motion.div 
           variants={staggerContainer}
@@ -28,13 +30,15 @@ export function WhyWorkWithMe() {
           {capabilities.map((cap, idx) => (
             <motion.div 
               key={idx} 
-              variants={fadeUpVariant} 
-              className={`p-6 bg-background rounded-2xl border border-border/50 shadow-sm hover:border-primary/40 transition-colors ${idx === capabilities.length - 1 && capabilities.length % 3 !== 0 ? 'lg:col-span-1 lg:col-start-2' : ''}`}
+              variants={fadeUpVariant}
+              whileHover={{ y: -6, scale: 1.015 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className={`p-6 bg-card/40 backdrop-blur-md rounded-2xl border border-primary/20 shadow-sm hover:border-primary/50 hover:shadow-[0_0_25px_rgba(192,133,82,0.15)] transition-all duration-300 group ${idx === capabilities.length - 1 && capabilities.length % 3 !== 0 ? 'lg:col-span-1 lg:col-start-2' : ''}`}
             >
-              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary mb-4">
-                <cap.icon className="w-6 h-6" />
+              <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_15px_rgba(192,133,82,0.4)] transition-all duration-300">
+                <cap.icon className="w-6 h-6 transform group-hover:scale-110 transition-transform duration-300" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">{cap.title}</h3>
+              <h3 className="text-xl font-bold text-foreground mb-2.5 group-hover:text-primary transition-colors">{cap.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">{cap.desc}</p>
             </motion.div>
           ))}
@@ -43,3 +47,4 @@ export function WhyWorkWithMe() {
     </AnimatedSection>
   );
 }
+

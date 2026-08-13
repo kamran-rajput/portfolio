@@ -98,21 +98,31 @@ export function Hero() {
           className="relative aspect-square max-w-md mx-auto w-full lg:ml-auto"
         >
           <div className="absolute inset-0 rounded-full glass flex items-center justify-center shadow-[0_0_80px_rgba(192,133,82,0.15)]">
-            {/* Core */}
+            {/* Core Orbit (128px diameter / 64px radius) */}
             <div className="relative w-32 h-32 rounded-full border border-primary/40 flex items-center justify-center animate-[spin_20s_linear_infinite]">
-              <div className="absolute w-4 h-4 bg-blue-500 rounded-full shadow-[0_0_15px_rgba(37,99,235,0.8)] -top-2 left-1/2 -translate-x-1/2"></div>
+              {/* Dot 1 (Innermost: 8px) - perfectly centered on 64px radius line */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.8)]" />
               <div className="w-24 h-24 rounded-full border border-dashed border-primary/30 animate-[spin_15s_linear_reverse_infinite]"></div>
             </div>
             
-            {/* Orbit 1 */}
+            {/* Orbit 1 (256px diameter / 128px radius) */}
             <div className="absolute w-64 h-64 rounded-full border border-primary/20 animate-[spin_30s_linear_reverse_infinite]">
-              <div className="absolute w-3 h-3 bg-red-500 rounded-full top-1/4 -right-1.5 shadow-[0_0_10px_rgba(239,68,68,0.8)]"></div>
+              {/* Dot 2 (2nd: 10px) - perfectly centered on 128px radius line */}
+              <div className="absolute top-1/2 left-1/2 w-0 h-0 -rotate-45">
+                <div className="absolute -top-[128px] left-0 -translate-x-1/2 -translate-y-1/2 w-[10px] h-[10px] bg-red-500 rounded-full shadow-[0_0_10px_rgba(239,68,68,0.8)]" />
+              </div>
             </div>
             
-            {/* Orbit 2 */}
+            {/* Orbit 2 (340px diameter / 170px radius) */}
             <div className="absolute w-[340px] h-[340px] rounded-full border border-dashed border-primary/15 animate-[spin_40s_linear_infinite]">
-              <div className="absolute w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.8)] bottom-1/4 -left-1.5"></div>
-              <div className="absolute w-3 h-3 bg-red-500 rounded-full shadow-[0_0_10px_rgba(239,68,68,0.8)] top-10 right-10"></div>
+              {/* Dot 3 (3rd: 12px) - perfectly centered on 170px radius line */}
+              <div className="absolute top-1/2 left-1/2 w-0 h-0 rotate-[135deg]">
+                <div className="absolute -top-[170px] left-0 -translate-x-1/2 -translate-y-1/2 w-3 h-3 bg-blue-500 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.8)]" />
+              </div>
+              {/* Dot 4 (Outermost: 14px) - perfectly centered on 170px radius line */}
+              <div className="absolute top-1/2 left-1/2 w-0 h-0 -rotate-[35deg]">
+                <div className="absolute -top-[170px] left-0 -translate-x-1/2 -translate-y-1/2 w-[14px] h-[14px] bg-red-500 rounded-full shadow-[0_0_12px_rgba(239,68,68,0.8)]" />
+              </div>
             </div>
             
             {/* Center Icon */}
