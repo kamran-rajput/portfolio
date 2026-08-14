@@ -10,15 +10,57 @@ function escapeHtml(text: string): string {
     .replace(/'/g, "&#039;");
 }
 
+async function verifyRecaptcha(token: string): Promise<boolean> {
+  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
+  if (!secretKey) {
+    console.warn("RECAPTCHA_SECRET_KEY is not set.");
+    return false;
+  }
+
+  try {
+    const params = new URLSearchParams();
+    params.append("secret", secretKey);
+    params.append("response", token);
+
+    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: params.toString(),
+    });
+
+    const data = await response.json();
+    return data.success === true;
+  } catch (error) {
+    console.error("Error verifying reCAPTCHA token:", error);
+    return false;
+  }
+}
+
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { name, email, company, subject, message, botcheck } = body;
+    const { name, email, company, subject, message, botcheck, recaptchaToken } = body;
 
     // Honeypot spam check: if hidden honeypot field is filled, silently return success to spambots
     if (botcheck && botcheck.trim() !== "") {
       console.warn("Spambot submission blocked via honeypot field.");
       return NextResponse.json({ success: true });
+    }
+
+    // Verify reCAPTCHA token
+    if (!recaptchaToken || typeof recaptchaToken !== "string" || recaptchaToken.trim() === "") {
+      return NextResponse.json(
+        { success: false, error: "Security check failed. Please complete the reCAPTCHA verification." },
+        { status: 400 }
+      );
+    }
+
+    const isRecaptchaValid = await verifyRecaptcha(recaptchaToken);
+    if (!isRecaptchaValid) {
+      return NextResponse.json(
+        { success: false, error: "reCAPTCHA validation failed. Please try verifying the reCAPTCHA again." },
+        { status: 400 }
+      );
     }
 
     // Input validation

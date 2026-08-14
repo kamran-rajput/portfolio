@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Input } from "@/components/ui/input";
@@ -13,11 +14,19 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setErrorMessage(null);
+
+    if (!recaptchaToken) {
+      setErrorMessage("Please complete the reCAPTCHA security check below before submitting.");
+      return;
+    }
+
+    setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
     const payload = {
@@ -27,7 +36,9 @@ export function ContactForm() {
       subject: formData.get("subject"),
       message: formData.get("message"),
       botcheck: formData.get("botcheck"),
+      recaptchaToken,
     };
+
 
     try {
       const res = await fetch("/api/contact", {
@@ -52,6 +63,8 @@ export function ContactForm() {
       }
     } finally {
       setIsSubmitting(false);
+      setRecaptchaToken(null);
+      recaptchaRef.current?.reset();
     }
   };
 
@@ -188,6 +201,16 @@ export function ContactForm() {
                   />
                 </div>
                 
+                {/* Google reCAPTCHA Security Verification */}
+                <div className="flex flex-col items-center justify-center pt-2 pb-1">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6Le4DIQtAAAAAOcdGdwe2HPjGV3Nf2dFiaL0ZEwW"}
+                    onChange={(token) => setRecaptchaToken(token)}
+                    theme="dark"
+                  />
+                </div>
+
                 <motion.div
                   whileHover={{ scale: 1.015, y: -2 }}
                   whileTap={{ scale: 0.985 }}
@@ -195,8 +218,8 @@ export function ContactForm() {
                 >
                   <Button 
                     type="submit" 
-                    disabled={isSubmitting} 
-                    className="w-full h-13 text-base font-semibold rounded-xl bg-gradient-to-r from-primary via-amber-600 to-primary bg-[length:200%_auto] text-primary-foreground shadow-[0_0_20px_rgba(192,133,82,0.25)] hover:shadow-[0_0_30px_rgba(192,133,82,0.45)] transition-all duration-300 relative overflow-hidden group cursor-pointer"
+                    disabled={isSubmitting || !recaptchaToken} 
+                    className="w-full h-13 text-base font-semibold rounded-xl bg-gradient-to-r from-primary via-amber-600 to-primary bg-[length:200%_auto] text-primary-foreground shadow-[0_0_20px_rgba(192,133,82,0.25)] hover:shadow-[0_0_30px_rgba(192,133,82,0.45)] transition-all duration-300 relative overflow-hidden group cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <span className="flex items-center justify-center gap-3">
@@ -223,4 +246,5 @@ export function ContactForm() {
     </AnimatedSection>
   );
 }
+
 
