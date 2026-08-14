@@ -35,7 +35,7 @@ export function ProjectPhilosophy() {
               variants={fadeUpVariant}
               whileHover={{ y: -6, scale: 1.02 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="flex flex-col items-center text-center p-6 bg-card/40 backdrop-blur-md rounded-2xl border border-primary/20 hover:border-primary/50 hover:shadow-[0_0_25px_rgba(192,133,82,0.15)] transition-all duration-300 group"
+              className="flex flex-col items-center text-center p-6 glass-card rounded-2xl shadow-md hover:border-primary/50 hover:shadow-[0_0_30px_rgba(192,133,82,0.2)] transition-all duration-300 group"
             >
               <div className="w-14 h-14 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-5 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_15px_rgba(192,133,82,0.4)] transition-all duration-300">
                 <pillar.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transform group-hover:scale-110 transition-all duration-300" />

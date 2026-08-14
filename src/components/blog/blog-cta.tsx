@@ -16,12 +16,12 @@ export function BlogCta() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8">
+          <Button asChild size="lg" className="w-full sm:w-auto h-12 px-8 shadow-md hover:shadow-primary/25 hover:shadow-lg transition-all hover:glow-primary relative overflow-hidden shimmer-overlay group">
             <Link href="/projects">
-              Explore Projects <ArrowRight className="ml-2 w-4 h-4" />
+              Explore Projects <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
             </Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8 border-border/50 hover:bg-secondary/50">
+          <Button asChild size="lg" variant="outline" className="w-full sm:w-auto h-12 px-8 border-primary/30 hover:bg-primary/10 hover:border-primary/50 transition-all glass-badge group">
             <Link href="/certifications">
               View Certifications
             </Link>

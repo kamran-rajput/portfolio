@@ -28,8 +28,8 @@ export function LearningPhilosophy() {
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {principles.map((p, idx) => (
-            <motion.div key={idx} variants={fadeUpVariant} className="flex flex-col items-center text-center p-6 bg-background rounded-2xl border border-border/50 shadow-sm hover:border-primary/50 transition-colors">
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 text-primary">
+            <motion.div key={idx} variants={fadeUpVariant} className="flex flex-col items-center text-center p-6 glass-card rounded-2xl shadow-md hover:border-primary/50 hover:shadow-[0_0_30px_rgba(192,133,82,0.2)] transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 text-primary shadow-[0_0_12px_rgba(192,133,82,0.2)]">
                 <p.icon className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-foreground mb-2">{p.title}</h3>

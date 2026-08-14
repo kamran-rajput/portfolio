@@ -52,7 +52,7 @@ export function FeaturedArticles() {
         >
           {featuredArticles.map((article, idx) => (
             <motion.div key={idx} variants={fadeUpVariant} className="flex h-full">
-              <Card className="bg-background border-border/40 hover:border-primary/40 transition-all duration-300 group overflow-hidden flex flex-col h-full w-full">
+              <Card className="glass-card hover:border-primary/60 transition-all duration-300 group overflow-hidden flex flex-col h-full w-full shadow-md hover:shadow-[0_0_30px_rgba(192,133,82,0.2)] rounded-2xl">
                 <CardContent className="p-6 flex flex-col h-full justify-between">
                   <div>
                     <div className="flex justify-between items-start mb-4">

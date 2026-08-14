@@ -41,8 +41,8 @@ export function ContactHero() {
         >
           <div className="inline-flex items-center space-x-2.5 bg-primary/10 px-4 py-1.5 rounded-full border border-primary/25 backdrop-blur-md shadow-[0_0_15px_rgba(192,133,82,0.15)]">
             <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary shadow-[0_0_8px_rgba(192,133,82,0.8)]"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.9)]"></span>
             </span>
             <span className="text-xs font-mono font-semibold tracking-wider text-primary uppercase flex items-center gap-1.5">
               <Sparkles className="w-3.5 h-3.5 text-primary" />

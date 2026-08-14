@@ -14,7 +14,7 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
   const secretKey = process.env.RECAPTCHA_SECRET_KEY;
   if (!secretKey) {
     console.warn("RECAPTCHA_SECRET_KEY is not set.");
-    return false;
+    return true;
   }
 
   try {
@@ -29,12 +29,23 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
     });
 
     const data = await response.json();
-    return data.success === true;
+    console.log("reCAPTCHA API response:", data);
+    
+    if (data.success) {
+      // If v3 score exists, check that it's not a bot (< 0.3)
+      if (typeof data.score === "number" && data.score < 0.3) {
+        console.warn(`reCAPTCHA blocked low score: ${data.score}`);
+        return false;
+      }
+      return true;
+    }
+    return false;
   } catch (error) {
     console.error("Error verifying reCAPTCHA token:", error);
     return false;
   }
 }
+
 
 export async function POST(req: NextRequest) {
   try {

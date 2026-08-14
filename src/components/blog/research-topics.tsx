@@ -49,7 +49,7 @@ export function ResearchTopics() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {topics.map((topic, idx) => (
-            <motion.div key={idx} variants={fadeUpVariant} className="p-6 bg-background rounded-2xl border border-border/40 hover:border-primary/40 hover:shadow-md transition-all group">
+            <motion.div key={idx} variants={fadeUpVariant} className="p-6 glass-card rounded-2xl hover:border-primary/50 hover:shadow-[0_0_25px_rgba(192,133,82,0.15)] transition-all group shadow-md">
               <h3 className="text-lg font-bold text-foreground mb-4 group-hover:text-primary transition-colors">{topic.name}</h3>
               <ul className="space-y-2">
                 {topic.items.map((item, i) => (

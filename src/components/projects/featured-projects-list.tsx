@@ -80,7 +80,7 @@ export function FeaturedProjectsList() {
               whileHover={{ y: -4 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <Card className="bg-card/50 backdrop-blur-xl border border-primary/20 hover:border-primary/50 transition-all duration-300 group overflow-hidden shadow-[0_0_30px_rgba(192,133,82,0.06)] hover:shadow-[0_0_40px_rgba(192,133,82,0.18)] rounded-2xl relative">
+              <Card className="glass-card hover:border-primary/50 transition-all duration-300 group overflow-hidden shadow-md hover:shadow-[0_0_40px_rgba(192,133,82,0.2)] rounded-2xl relative">
                 <CardContent className="p-0">
                   <div className="grid grid-cols-1 lg:grid-cols-12">
                     {/* Left Column: Metadata & Core Info */}

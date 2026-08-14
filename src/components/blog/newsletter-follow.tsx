@@ -13,7 +13,7 @@ export function NewsletterFollow() {
   return (
     <AnimatedSection className="py-24">
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-        <div className="bg-secondary/10 border border-border/40 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden">
+        <div className="glass-card border-primary/30 rounded-2xl p-8 md:p-12 text-center relative overflow-hidden shadow-[0_0_40px_rgba(192,133,82,0.12)]">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent -z-10"></div>
           
           <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Follow My Journey</h2>

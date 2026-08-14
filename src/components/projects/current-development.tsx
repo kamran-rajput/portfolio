@@ -36,7 +36,7 @@ export function CurrentDevelopment() {
               variants={fadeUpVariant}
               whileHover={{ scale: 1.06, y: -2 }}
               transition={{ duration: 0.2 }}
-              className="px-5 py-3 bg-card/40 backdrop-blur-md border border-primary/20 hover:border-primary/60 hover:bg-primary/10 rounded-xl shadow-sm hover:shadow-[0_0_15px_rgba(192,133,82,0.2)] transition-all duration-300 flex items-center gap-2.5 cursor-default"
+              className="px-5 py-3 glass-card hover:border-primary/60 hover:bg-primary/10 rounded-xl shadow-sm hover:shadow-[0_0_15px_rgba(192,133,82,0.2)] transition-all duration-300 flex items-center gap-2.5 cursor-default"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>

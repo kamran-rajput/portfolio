@@ -28,8 +28,8 @@ export function ResearchPhilosophy() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {philosophyItems.map((item, idx) => (
-            <motion.div key={idx} variants={fadeUpVariant} className="flex flex-col items-center text-center p-6 bg-background rounded-2xl border border-border/50 shadow-sm hover:border-primary/50 transition-colors">
-              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+            <motion.div key={idx} variants={fadeUpVariant} className="flex flex-col items-center text-center p-6 glass-card rounded-2xl shadow-md hover:border-primary/50 hover:shadow-[0_0_30px_rgba(192,133,82,0.2)] transition-all duration-300">
+              <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-4 shadow-[0_0_12px_rgba(192,133,82,0.2)]">
                 <item.icon className="w-5 h-5" />
               </div>
               <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>

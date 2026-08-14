@@ -29,7 +29,7 @@ export function FeaturedSeries() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {series.map((s, idx) => (
-            <motion.div key={idx} variants={fadeUpVariant} className="p-6 bg-secondary/10 border border-border/40 rounded-xl relative overflow-hidden group">
+            <motion.div key={idx} variants={fadeUpVariant} className="p-6 glass-card rounded-2xl relative overflow-hidden group shadow-md hover:border-primary/50 hover:shadow-[0_0_25px_rgba(192,133,82,0.15)] transition-all">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                 <Layers className="w-16 h-16 text-primary" />
               </div>

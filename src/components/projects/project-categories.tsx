@@ -30,7 +30,7 @@ export function ProjectCategories() {
               key={idx}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.96 }}
-              className="px-5 py-2.5 rounded-full text-sm font-medium transition-all bg-card/40 backdrop-blur-md text-foreground hover:text-primary border border-primary/20 hover:border-primary/60 hover:bg-primary/10 shadow-sm hover:shadow-[0_0_15px_rgba(192,133,82,0.15)] cursor-pointer"
+              className="px-5 py-2.5 rounded-full text-sm font-medium transition-all glass-card text-foreground hover:text-primary hover:border-primary/60 hover:bg-primary/10 shadow-sm hover:shadow-[0_0_15px_rgba(192,133,82,0.15)] cursor-pointer"
             >
               {cat.name} <span className="ml-1 text-muted-foreground opacity-70">({cat.count})</span>
             </motion.button>

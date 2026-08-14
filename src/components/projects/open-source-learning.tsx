@@ -36,7 +36,7 @@ export function OpenSourceLearning() {
               variants={fadeUpVariant}
               whileHover={{ y: -3, scale: 1.02 }}
               transition={{ duration: 0.2 }}
-              className="flex items-center gap-3 p-4 bg-card/30 backdrop-blur-md border border-primary/20 hover:border-primary/50 hover:bg-primary/5 rounded-xl shadow-sm hover:shadow-[0_0_20px_rgba(192,133,82,0.1)] transition-all duration-300 text-left group"
+              className="flex items-center gap-3 p-4 glass-card hover:border-primary/50 hover:bg-primary/5 rounded-xl shadow-sm hover:shadow-[0_0_20px_rgba(192,133,82,0.15)] transition-all duration-300 text-left group"
             >
               <CheckCircle2 className="w-4 h-4 text-primary shrink-0 group-hover:scale-110 transition-transform duration-300" />
               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{item}</span>

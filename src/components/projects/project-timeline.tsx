@@ -40,7 +40,7 @@ export function ProjectTimeline() {
                 viewport={{ once: true, margin: "-10%" }}
                 whileHover={{ scale: 1.06, y: -2 }}
                 transition={{ duration: 0.25 }}
-                className="bg-card/50 backdrop-blur-md border border-primary/20 px-7 py-3.5 rounded-full text-sm font-semibold text-foreground hover:text-primary shadow-sm hover:border-primary/50 hover:shadow-[0_0_20px_rgba(192,133,82,0.15)] transition-all duration-300 cursor-default"
+                className="glass-card px-7 py-3.5 rounded-full text-sm font-semibold text-foreground hover:text-primary shadow-sm hover:border-primary/60 hover:shadow-[0_0_20px_rgba(192,133,82,0.18)] transition-all duration-300 cursor-default"
               >
                 {step}
               </motion.div>

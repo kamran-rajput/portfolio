@@ -33,7 +33,7 @@ export function WhyWorkWithMe() {
               variants={fadeUpVariant}
               whileHover={{ y: -6, scale: 1.015 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className={`p-6 bg-card/40 backdrop-blur-md rounded-2xl border border-primary/20 shadow-sm hover:border-primary/50 hover:shadow-[0_0_25px_rgba(192,133,82,0.15)] transition-all duration-300 group ${idx === capabilities.length - 1 && capabilities.length % 3 !== 0 ? 'lg:col-span-1 lg:col-start-2' : ''}`}
+              className={`p-6 glass-card rounded-2xl shadow-md hover:border-primary/50 hover:shadow-[0_0_30px_rgba(192,133,82,0.2)] transition-all duration-300 group ${idx === capabilities.length - 1 && capabilities.length % 3 !== 0 ? 'lg:col-span-1 lg:col-start-2' : ''}`}
             >
               <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_15px_rgba(192,133,82,0.4)] transition-all duration-300">
                 <cap.icon className="w-6 h-6 transform group-hover:scale-110 transition-transform duration-300" />

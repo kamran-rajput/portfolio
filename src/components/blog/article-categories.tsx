@@ -27,7 +27,7 @@ export function ArticleCategories() {
           {categories.map((cat, idx) => (
             <button 
               key={idx}
-              className="px-4 py-2 rounded-full text-sm font-medium transition-all bg-background text-foreground border border-border/50 hover:border-primary/50 hover:bg-primary/5"
+              className="px-4 py-2 rounded-full text-sm font-medium transition-all glass-card text-foreground hover:border-primary/60 hover:bg-primary/10 shadow-sm"
             >
               {cat.name} <span className="ml-1 opacity-50">({cat.count})</span>
             </button>

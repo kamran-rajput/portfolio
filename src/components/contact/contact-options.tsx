@@ -36,7 +36,7 @@ export function ContactOptions() {
                 href={opt.link} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="flex flex-col h-full p-6 bg-card/40 backdrop-blur-md border border-primary/20 hover:border-primary/60 hover:bg-primary/5 rounded-2xl transition-all duration-300 group shadow-sm hover:shadow-[0_0_25px_rgba(192,133,82,0.15)]"
+                className="flex flex-col h-full p-6 glass-card hover:border-primary/60 hover:bg-primary/5 rounded-2xl transition-all duration-300 group shadow-md hover:shadow-[0_0_30px_rgba(192,133,82,0.2)]"
               >
                 <div className="flex justify-between items-start mb-6">
                   <div className="w-12 h-12 bg-primary/10 border border-primary/20 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_15px_rgba(192,133,82,0.4)] transition-all duration-300">

@@ -41,7 +41,7 @@ export function EngineeringProcess() {
               variants={fadeUpVariant} 
               whileHover={{ y: -6, scale: 1.05 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
-              className="flex flex-col items-center text-center w-full lg:w-32 p-4 bg-card/40 backdrop-blur-md border border-primary/20 hover:border-primary/50 rounded-2xl shadow-sm hover:shadow-[0_0_20px_rgba(192,133,82,0.15)] transition-all duration-300 group"
+              className="flex flex-col items-center text-center w-full lg:w-32 p-4 glass-card hover:border-primary/50 rounded-2xl shadow-md hover:shadow-[0_0_20px_rgba(192,133,82,0.18)] transition-all duration-300 group"
             >
               <div className="w-14 h-14 bg-primary/10 border border-primary/20 rounded-2xl flex items-center justify-center mb-3.5 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-[0_0_15px_rgba(192,133,82,0.4)] transition-all duration-300">
                 <step.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transform group-hover:scale-110 transition-transform duration-300" />

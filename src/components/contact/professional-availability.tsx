@@ -42,7 +42,7 @@ export function ProfessionalAvailability() {
               variants={fadeUpVariant}
               whileHover={{ y: -3, scale: 1.02 }}
               transition={{ duration: 0.2 }}
-              className="flex items-center gap-3.5 p-4 bg-card/30 backdrop-blur-md border border-border/50 hover:border-primary/40 hover:bg-primary/5 rounded-xl transition-all duration-300 text-left group shadow-sm hover:shadow-[0_0_20px_rgba(192,133,82,0.1)]"
+              className="flex items-center gap-3.5 p-4 glass-card hover:border-primary/40 hover:bg-primary/5 rounded-xl transition-all duration-300 text-left group shadow-sm hover:shadow-[0_0_20px_rgba(192,133,82,0.15)]"
             >
               <CheckCircle2 className="w-5 h-5 text-primary shrink-0 group-hover:scale-110 transition-transform duration-300" />
               <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">{role}</span>

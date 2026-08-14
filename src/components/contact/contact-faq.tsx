@@ -53,7 +53,7 @@ export function ContactFaq() {
             <AccordionItem 
               key={idx} 
               value={`item-${idx}`} 
-              className="bg-card/40 backdrop-blur-md border border-primary/20 hover:border-primary/50 rounded-2xl px-6 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(192,133,82,0.1)]"
+              className="glass-card hover:border-primary/50 rounded-2xl px-6 transition-all duration-300 shadow-sm hover:shadow-[0_0_25px_rgba(192,133,82,0.15)]"
             >
               <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary transition-colors py-5 text-base sm:text-lg">
                 {faq.q}

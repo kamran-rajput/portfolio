@@ -60,7 +60,7 @@ export function LatestResearch() {
           {recentArticles.map((article, idx) => (
             <motion.div key={idx} variants={fadeUpVariant}>
               <Link href="#" className="block group">
-                <div className="p-6 bg-background rounded-xl border border-border/40 hover:border-primary/50 transition-all duration-300 shadow-sm hover:shadow-md">
+                <div className="p-6 glass-card rounded-2xl hover:border-primary/60 transition-all duration-300 shadow-md hover:shadow-[0_0_25px_rgba(192,133,82,0.18)]">
                   <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                     <div className="flex items-center gap-3">
                       <span className="text-xs font-bold uppercase tracking-wider text-primary">{article.category}</span>
