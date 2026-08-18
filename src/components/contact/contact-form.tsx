@@ -1,8 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import Script from "next/script";
-import ReCAPTCHA from "react-google-recaptcha";
 import { motion, AnimatePresence } from "framer-motion";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Input } from "@/components/ui/input";
@@ -22,12 +21,22 @@ export function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
-  const recaptchaRef = useRef<ReCAPTCHA | null>(null);
 
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || "6Le4DIQtAAAAAOcdGdwe2HPjGV3Nf2dFiaL0ZEwW";
 
   const executeV3Recaptcha = async (): Promise<string | null> => {
-    if (typeof window === "undefined" || !window.grecaptcha) return null;
+    if (typeof window === "undefined") return null;
+
+    const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
+    if (!window.grecaptcha) {
+      if (isLocalhost) {
+        console.warn("[reCAPTCHA] window.grecaptcha not loaded on localhost. Using dev-bypass-token.");
+        return "dev-bypass-token";
+      }
+      return null;
+    }
+
     return new Promise((resolve) => {
       try {
         window.grecaptcha.ready(() => {
@@ -36,17 +45,29 @@ export function ContactForm() {
             .then((token: string) => resolve(token))
             .catch((err: unknown) => {
               console.warn("reCAPTCHA v3 execute error:", err);
-              resolve(null);
+              if (isLocalhost) {
+                console.warn("[reCAPTCHA] Execution error on localhost. Falling back to dev-bypass-token.");
+                resolve("dev-bypass-token");
+              } else {
+                resolve(null);
+              }
             });
         });
       } catch {
-        resolve(null);
+        if (isLocalhost) {
+          resolve("dev-bypass-token");
+        } else {
+          resolve(null);
+        }
       }
     });
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const formElement = e.currentTarget;
+    const formData = new FormData(formElement);
+
     setErrorMessage(null);
     setIsSubmitting(true);
 
@@ -55,13 +76,17 @@ export function ContactForm() {
       token = await executeV3Recaptcha();
     }
 
+    // Secondary fallback for localhost if token remains empty
+    if (!token && typeof window !== "undefined" && (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")) {
+      token = "dev-bypass-token";
+    }
+
     if (!token) {
       setErrorMessage("reCAPTCHA security check required. Please verify the reCAPTCHA or try again.");
       setIsSubmitting(false);
       return;
     }
 
-    const formData = new FormData(e.currentTarget);
     const payload = {
       name: formData.get("name"),
       email: formData.get("email"),
@@ -71,8 +96,6 @@ export function ContactForm() {
       botcheck: formData.get("botcheck"),
       recaptchaToken: token,
     };
-
-
 
     try {
       const res = await fetch("/api/contact", {
@@ -98,7 +121,6 @@ export function ContactForm() {
     } finally {
       setIsSubmitting(false);
       setRecaptchaToken(null);
-      recaptchaRef.current?.reset();
     }
   };
 
@@ -106,7 +128,7 @@ export function ContactForm() {
     <>
       <Script
         src={`https://www.google.com/recaptcha/api.js?render=${siteKey}`}
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
       <AnimatedSection className="py-20 bg-secondary/5 border-y border-border/30 relative" id="contact-form">
         <div className="mx-auto max-w-2xl px-4 sm:px-6 lg:px-8">
